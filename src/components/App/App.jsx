@@ -8,10 +8,11 @@ import SearchBar from "../SearchBar/SearchBar";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { fetchImages } from "../unsplash.js";
+import toast from "react-hot-toast";
 
 export default function App() {
     const [topic, setTopic] = useState("");
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [page, setPage] = useState(1);
@@ -19,12 +20,13 @@ export default function App() {
     const [modalImageUrl, setModalImageUrl] = useState("");
     const [modalAltDescription, setModalAltDescription] = useState("");
 
-    const handleSearch = (query) => {
-        console.log("Searching for:", query);
-        setTopic(query);
+    const handleSearch = (newTopic) => {
+        console.log("Searching for:", newTopic);
+        setTopic(newTopic);
         setImages([]);
         setPage(1);
     };
+
     const handleLoadMore = () => {
         setPage((prevPage) => prevPage + 1);
     };
@@ -44,15 +46,11 @@ export default function App() {
         }
 
         async function getImages() {
-            //     const response = await axios.get(
-            //         "https://api.unsplash.com/photos/?client_id=Wc2fQQu_VfDgC39QNbmX0JouwDxAWt_sCt8wG7GXmZ4"
-            //     );
-            //     console.log(response.data);
-            // }
             try {
                 setLoading(true);
                 setError("");
                 const data = await fetchImages(topic, page);
+                console.log("data:", data);
                 setImages((prevImages) => {
                     return [...prevImages, ...data];
                 });
@@ -73,8 +71,8 @@ export default function App() {
                 <ErrorMessage message={error} />
             ) : (
                 <>
-                    <ImageGallery items={images} onImageClick={openModal} />
-                    {images.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
+                    {images && <ImageGallery images={images} onImageClick={openModal} />}
+                    {images && images.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
                 </>
             )}
             <Loader loading={loading} />

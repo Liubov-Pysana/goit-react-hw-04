@@ -13,6 +13,7 @@ export default function SearchBar({ onSubmit }) {
         <header className={styles.header}>
             <Formik
                 initialValues={{ query: "" }}
+                validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
                     const trimmedQuery = values.query.trim();
                     if (trimmedQuery === "") {
