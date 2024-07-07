@@ -77,8 +77,8 @@ export default function App() {
                     {images.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
                 </>
             )}
-            {/* <Loader loading={loading} />
-            <Toaster /> */}
+            <Loader loading={loading} />
+            <Toaster />
             <ImageModal
                 isOpen={modalIsOpen}
                 closeModal={closeModal}

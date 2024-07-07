@@ -1,10 +1,22 @@
-import { Audio } from "react-loader-spinner";
-import css from "./Loader.module.css";
+import { RotatingLines } from "react-loader-spinner";
+import styles from "./Loader.module.css";
 
 export default function Loader({ loading }) {
     return (
-        <div className={css.loader}>
-            {loading && <Audio height="100" width="100" color="grey" ariaLabel="loading" />}
+        <div className={styles.loader}>
+            {loading && (
+                <RotatingLines
+                    visible={true}
+                    height="96"
+                    width="96"
+                    color="black"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    ariaLabel="rotating-lines-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                />
+            )}
         </div>
     );
 }
