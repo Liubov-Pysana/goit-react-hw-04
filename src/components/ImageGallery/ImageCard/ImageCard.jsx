@@ -1,12 +1,20 @@
-// import React from "react";
-// import styles from "./ImageCard.module.css";
+import styles from "./ImageCard.module.css";
 
-// const ImageCard = ({ image, onClick }) => {
+// export default function ImageCard({ image, onClick }) {
 //     return (
 //         <div className={styles.imageCard} onClick={onClick}>
 //             <img src={image.urls.small} alt={image.alt_description} />
 //         </div>
 //     );
-// };
-
-// export default ImageCard;
+// }
+export default function ImageCard({ image, onImageClick }) {
+    return (
+        <div>
+            <img
+                onClick={() => onImageClick(image.url, image.alt_description || "Image")}
+                src={image.url}
+                alt={image.alt_description || "Image"}
+            />
+        </div>
+    );
+}
