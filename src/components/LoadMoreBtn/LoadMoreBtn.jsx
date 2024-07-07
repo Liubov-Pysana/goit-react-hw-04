@@ -1,12 +1,9 @@
-// import React from "react";
-// import styles from "./LoadMoreBtn.module.css";
+import styles from "./LoadMoreBtn.module.css";
 
-// const LoadMoreBtn = ({ onClick }) => {
-//     return (
-//         <button onClick={onClick} className={styles.loadMoreBtn}>
-//             Load more
-//         </button>
-//     );
-// };
-
-// export default LoadMoreBtn;
+export default function LoadMoreBtn({ handleLoadMore }) {
+    return (
+        <button className={styles.button} onClick={handleLoadMore}>
+            Load more
+        </button>
+    );
+}

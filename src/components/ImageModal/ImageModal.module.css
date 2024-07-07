@@ -1,5 +1,4 @@
-/* src/components/ImageModal/ImageModal.module.css */
-.modalOverlay {
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +10,7 @@
     align-items: center;
 }
 
-.modalContent {
+.content {
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -20,12 +19,12 @@
     overflow: auto;
 }
 
-.modalBody {
+/* .modalBody {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-}
+} */
 
 .image {
     max-width: 100%;
@@ -33,6 +32,6 @@
     margin-bottom: 20px;
 }
 
-.modalDetails {
+/* .modalDetails {
     text-align: center;
-}
+} */

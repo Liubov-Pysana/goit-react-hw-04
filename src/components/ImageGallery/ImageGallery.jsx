@@ -1,8 +1,8 @@
-import ImageCard from "./ImageCard";
+import ImageCard from "./ImageCard/ImageCard";
 import styles from "./ImageGallery.module.css";
 
 export default function ImageGallery({ images, onImageClick }) {
-    if (images.length === 0) {
+    if (!images || images.length === 0) {
         return <p>No images found.</p>;
     }
 
