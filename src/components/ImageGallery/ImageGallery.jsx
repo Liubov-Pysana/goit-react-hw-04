@@ -10,7 +10,7 @@ export default function ImageGallery({ images, onImageClick }) {
         <ul className={styles.imageGallery}>
             {images.map((image) => (
                 <li key={image.id}>
-                    <ImageCard image={image} onClick={onImageClick} />
+                    <ImageCard image={image} onImageClick={onImageClick} />
                 </li>
             ))}
         </ul>
