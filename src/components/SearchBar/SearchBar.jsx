@@ -4,17 +4,19 @@ import styles from "./SearchBar.module.css";
 import { Field, Form, Formik } from "formik";
 import toast, { Toaster } from "react-hot-toast";
 
-const validationSchema = Yup.object().shape({
-    query: Yup.string().min(3, "Minimum 3 letters").required("This field is required"),
-});
+// const validationSchema = Yup.object().shape({
+//     query: Yup.string().min(3, "Minimum 3 letters").required("This field is required"),
+// });
 
 export default function SearchBar({ onSubmit }) {
     return (
         <header className={styles.header}>
             <Formik
                 initialValues={{ query: "" }}
-                validationSchema={validationSchema}
+                //validationSchema={validationSchema}
                 onSubmit={(values, actions) => {
+                    onSubmit(values.query);
+                    actions.resetForm();
                     const trimmedQuery = values.query.trim();
                     if (trimmedQuery === "") {
                         toast.error("Cannot be empty");
